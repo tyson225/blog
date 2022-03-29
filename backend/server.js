@@ -10,11 +10,10 @@ require('dotenv').config();
 const app = express();
 
 // database
-mongoose.connect(process.env.DATABASE, {
-  useNewUrlParser: true,
-//   useCreateIndex: true,
-//   useFindAndModify: false,
-}).then(() => console.log('connected to mongodb'));
+mongoose
+  .connect(process.env.DATABASE)
+  .then(() => console.log('connected to mongodb'))
+  .catch(() => console.log('error connecting to db!'));
 
 // middleware
 app.use(morgan('dev'));
